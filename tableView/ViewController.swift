@@ -52,6 +52,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = ilIsimleri[indexPath.row] // illeri dizideki index numarasına göre ekranda gösterdik.
         return cell
     }
+    
+    
+    // verileri yana kaydırarak silmek için bunu kullandık.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        if editingStyle == .delete {
+            ilIsimleri.remove(at: indexPath.row)
+            ilgorselIsimleri.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        }
+    }
+
 
 }
 
