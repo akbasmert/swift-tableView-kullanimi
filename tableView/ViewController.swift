@@ -11,6 +11,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     
+    var ilIsimleri = [String]() // ilIsimleri diye boş bir dizi oluşturduk.
+    var ilgorselIsimleri = [String]() // görseller için dizi oluşturduk.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        var ilIsimleri = [String]() // ilIsimleri diye boş bir dizi oluşturduk.
+        
         ilIsimleri.append("ordu")
         ilIsimleri.append("izmir")
         ilIsimleri.append("adana")
@@ -27,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ilIsimleri.append("istanbul")
         ilIsimleri.append("yalova")
         
-        var ilgorselIsimleri = [String]()
+       
         ilgorselIsimleri.append("ordu")
         ilgorselIsimleri.append("izmir")
         ilgorselIsimleri.append("adana")
@@ -41,12 +44,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // cellForRow atIndexPath -> hücrenin içerisinde neler gösterilecek.
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return ilIsimleri.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Text"
+        cell.textLabel?.text = ilIsimleri[indexPath.row] // illeri dizideki index numarasına göre ekranda gösterdik.
         return cell
     }
 
