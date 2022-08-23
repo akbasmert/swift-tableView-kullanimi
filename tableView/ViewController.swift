@@ -18,6 +18,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Son olarak kullandığımız delegate ve dataSourceyi burada belirtiyoruz (bir nevi buradakini kullandık demek için)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        var ilIsimleri = [String]() // ilIsimleri diye boş bir dizi oluşturduk.
+        ilIsimleri.append("ordu")
+        ilIsimleri.append("izmir")
+        ilIsimleri.append("adana")
+        ilIsimleri.append("ankara")
+        ilIsimleri.append("istanbul")
+        ilIsimleri.append("yalova")
+        
+        var ilgorselIsimleri = [String]()
+        ilgorselIsimleri.append("ordu")
+        ilgorselIsimleri.append("izmir")
+        ilgorselIsimleri.append("adana")
+        ilgorselIsimleri.append("ankara")
+        ilgorselIsimleri.append("istanbul")
+        ilgorselIsimleri.append("yalova")
+        
     }
     
     // NumberOfRowsInsection -> kaç tane row olacağını belirler.
