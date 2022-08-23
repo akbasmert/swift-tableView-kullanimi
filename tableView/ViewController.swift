@@ -13,7 +13,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var ilIsimleri = [String]() // ilIsimleri diye boş bir dizi oluşturduk.
     var ilgorselIsimleri = [String]() // görseller için dizi oluşturduk.
-    
+    var secilenIl = ""
+    var secilenGorsel = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -60,6 +61,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             ilIsimleri.remove(at: indexPath.row)
             ilgorselIsimleri.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        }
+    }
+    
+    
+    // TableViewde yaptığımız seçime göre index veriyor (yani detay sayfasına gideceğiz)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         secilenIl = ilIsimleri[indexPath.row]
+         secilenGorsel = ilgorselIsimleri[indexPath.row]
+        performSegue(withIdentifier: "toDetailsVc", sender: nil) //oluşturduğum navigationController ile bağladık 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // bu fonksiyon ile veri aktarımını sağladık 
+        if segue.identifier == "toDetailsVc"{
+            let destinationVC = segue.destination as! DetailsViewController
+            destinationVC.secilenIl = secilenIl
+            destinationVC.secilenIlGorsel = secilenGorsel
         }
     }
 
